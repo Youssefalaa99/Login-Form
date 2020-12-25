@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-------------------------------------------------------------------------------->
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" type="text/css" href="../css/util.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
+    integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+  <!-------------------------------------------------------------------------------->
+  <title>Register</title>
+  <!-------------------------------------------------------------------------------->
+  <script>
+    function validateEmail(email) {
+      const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(String(email).toLowerCase());
+    }
+    function validateForm() {
+      var name = document.getElementById("name").value;
+      var email = document.getElementById("email").value;
+      var pass = document.getElementById("psw").value;
+      var confirm = document.getElementById("psw-repeat").value;
+      if (name == "") {
+        alert("Please fill in your name!");
+        return false;
+      }
+      else if (email == "") {
+        alert("Please fill in your email!");
+        return false;
+      }
+      else if (pass == "") {
+        alert("Please fill in your password!");
+        return false;
+      }
+      else if (confirm == "") {
+        alert("Please confirm your password!");
+        return false;
+      }
+      if(!validateEmail(email)){
+        alert("Email is not valid!")
+        return false;
+      }
+      if (pass != confirm) {
+        alert("Passwords Don't Match!");
+        return false;
+      }
+
+    }
+  </script>
+  <!-------------------------------------------------------------------------------->
+</head>
+
+<body>
+  <div class="container" style="margin-top: 150px;">
+    <div class="d-flex justify-content-center h-100">
+      <div class="user_card">
+        <div class="d-flex justify-content-center">
+          <div class="brand_logo_container">
+            <img src="../images/avatar.jpg" class="brand_logo" alt="Logo">
+          </div>
+        </div>
+        <div class="d-flex justify-content-center form_container">
+          <form action="../php/registration.php" onsubmit="return validateForm()" method="post">
+            <div class="input-group mb-3">
+              <div class="input-group-append">
+                <span class="input-group-text"><i class="fas fa-user"></i></span>
+              </div>
+              <input type="text" name="name" id="name" class="form-control input_user"  placeholder="Enter Your Name">
+            </div>
+            <div class="input-group mb-3">
+              <div class="input-group-append">
+                <span class="input-group-text"><i class="fas fa-user"></i></span>
+              </div>
+              <input type="text" name="email" id="email" class="form-control input_user"  placeholder="Enter Your Email">
+            </div>
+            <div class="input-group mb-3">
+              <div class="input-group-append">
+                <span class="input-group-text"><i class="fas fa-key"></i></span>
+              </div>
+              <input type="password" name="psw" id="psw" class="form-control input_pass" placeholder="Enter Your Password">
+            </div>
+            <div class="input-group mb-3">
+              <div class="input-group-append">
+                <span class="input-group-text"><i class="fas fa-key"></i></span>
+              </div>
+              <input type="password" name="psw-repeat" id="psw-repeat" class="form-control input_pass" placeholder="Confirm Your Password">
+            </div>
+            <div class="d-flex justify-content-center mt-3 login_container">
+              <button type="submit" name="button" class="btn login_btn">Register</button>
+            </div>
+          </form>
+        </div>
+  
+        <div class="mt-4">
+          <div class="d-flex justify-content-center links">
+            Already have an account? <a href="Login.html" class="ml-2">Login!</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</body>
+
+</html>
